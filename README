@@ -1,0 +1,2 @@
+Compiler options (tested):
+g++ ericPhungGuess.cpp 

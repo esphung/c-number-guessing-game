@@ -39,6 +39,14 @@ void tooHigh(){
 	//printf("\nGuess(%i) = %i\n", tries, b);
 }
 
+/*highLimit = b;
+tooHigh();*/
+
+/*
+lowLimit = b;
+			tooLow();
+*/
+
 
 void guessCompare(){
 	if (a == b)
@@ -58,6 +66,7 @@ void guessCompare(){
 		//printf("Too high = True\n");
 		highLimit = b;
 		tooHigh();
+		
 	}
 	else if (highMatched == FALSE)
 	{
@@ -72,6 +81,7 @@ void guessCompare(){
 			//printf("Too low = True\n");
 			lowLimit = b;
 			tooLow();
+			
 		}
 		else if (lowMatched != TRUE)
 		{
@@ -84,7 +94,6 @@ void guessCompare(){
 		cout << "Oops! Something isn't right with the my initial guess";
 		return;
 	}
-
 }
 
 
