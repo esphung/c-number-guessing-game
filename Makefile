@@ -5,15 +5,16 @@ CFLAGS=-Wall -g
 
 run:
 	./a.out
-	#./pegasusGuess
+	./pegasusGuess
 
 all:
 	#gcc pegasusGuess.cpp
 	g++ pegasusGuess.cpp
-	make pegasusGuess
+	#g++ -std=c++0x pegasusGuess.cpp -o pegasusGuess
+	#make pegasusGuess
 
 
 clean:
 	rm -rf a.out
-	rm -f pegasusGuess
+	rm -rf pegasusGuess
 
