@@ -11,7 +11,7 @@
 using namespace std;
 
 
-int a, b, tries = 1;// Declaration of main variables used
+int a, aiGuess, tries = 1;// Declaration of main variables used
 char arg[] = {};
 char userInput[] = {};
 char userChoice[] = {};// user declare ready
@@ -24,22 +24,22 @@ void tooHigh();
 
 void tooLow(){
 	tries = (tries+1);
-	lowLimit = b;
-	b = lowLimit + (std::rand() %(highLimit - lowLimit +1));
+	lowLimit = aiGuess;
+	aiGuess = lowLimit + (std::rand() %(highLimit - lowLimit +1));
 	do{
 		/* first guess partition */
-		b = (lowLimit+highLimit)/2;
+		aiGuess = (lowLimit+highLimit)/2;
 	} while (tries < 2);
 }
 
 
 void tooHigh(){
 	tries = (tries+1);
-	highLimit = b;
-	b = lowLimit + (std::rand() %(highLimit - lowLimit));
+	highLimit = aiGuess;
+	aiGuess = lowLimit + (std::rand() %(highLimit - lowLimit));
 	do{
 		/* first guess partition */
-		b = (lowLimit+highLimit)/2;
+		aiGuess = (lowLimit+highLimit)/2;
 	} while (tries < 2);
 	//printf("\nGuess(%i) = %i\n", tries, b);
 }
@@ -63,7 +63,7 @@ int main(){
 	srand(time(NULL));
 	/* initialize random values */
 	a = rand() % highLimit + lowLimit;// random coorect number for development
-	b = 50;// initialize first guess as two possible partitions
+	aiGuess = 50;// initialize first guess as two possible partitions
 
 	cout << "\tHello Guessing Game Version 2.0" << endl;
 
@@ -88,8 +88,15 @@ int main(){
 		
 
 
-	/* Evaluate user input | shall be WHILE LOOP */
-	while(tries < MAX) {
+	/* Evaluate user input | added + 1 to MAX to make up for 'ready' user input */
+	while(tries <= MAX) {
+
+		if (tries == MAX)
+		{
+			/* force win */
+			cout << "Rusty: 	The number you chose is " << aiGuess << "\nYay!  Cake and punch for everyone!!!\n\tGoodbye!" << endl;
+			return 0;
+		}
 
 		if ((userReady.compare(strReady)==1))
 		{
@@ -99,7 +106,7 @@ int main(){
 		/* main code */
 
 		//cout << "Correct: 	" << a << endl;
-		cout << "Guess(" << tries << ") = 	" << b << endl;
+		cout << "Guess(" << tries << ") = 	" << aiGuess << endl;
 		cout << "Rusty: 	Is this guess too high or too low?\n(type 'too high' or 'too low' or 'correct' or 'quit')" << endl;
         getline(std::cin, userInput);
 	
@@ -122,19 +129,18 @@ int main(){
 	    	/* if user typed 'too high' */
 	        cout << "You said my answer was too high" << endl;
 	        //cout << b << endl;
-	        highLimit = b;
+	        highLimit = aiGuess;
 	        tooHigh();
 
 	    }
 	    else if (userInput.compare(strLow) == 0){
 	    	/* if user typed 'too low' */
 	        cout << "You said my answer was too low" << endl;
-	        lowLimit = b;
+	        lowLimit = aiGuess;
 	        tooLow();
 	    } 
-
-
 	    else {
+
 	    	cout << "oh no! sumthing broke!\nRusty: 	Let's try this again...type 'too low' if I guessed TOO LOW, 'too high' if I guessed TOO HIGH, and 'quit' if you decide not to play." << endl;
 	    } // end control user input loop
 
