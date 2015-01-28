@@ -1,3 +1,31 @@
+HOW TO RUN THIS PROGRAM!
+
+(while in directory run...)
+Command line:
+	make clean
+	make all
+	make run
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 http://www-scf.usc.edu/~csci104/installation/gccmac.html (gdb, g++/g++4.8, gcc install instructions)
 
 For Mac:

@@ -1,11 +1,7 @@
 CFLAGS=-Wall -g
-
-
-
-
 run:
 	./a.out
-	./pegasusGuess
+	#./pegasusGuess
 
 all:
 	#gcc pegasusGuess.cpp
@@ -16,5 +12,5 @@ all:
 
 clean:
 	rm -rf a.out
-	rm -rf pegasusGuess
+	#rm -rf pegasusGuess
 
