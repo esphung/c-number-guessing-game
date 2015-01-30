@@ -1,3 +1,11 @@
+/*
+FILENAME:			pegasusGuess.cpp
+AUTHOR:				Eric Scott Phung
+CREATED:			2014.01.26 (ESP)
+PURPOSE:			c++ Number Guessing Game
+					Human user chooses a number;
+					Ai will guess the number up to 7 times;
+*/
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -62,7 +70,7 @@ int main(){
 
 	srand(time(NULL));
 	/* initialize random values */
-	a = rand() % highLimit + lowLimit;// random coorect number for development
+	//a = rand() % highLimit + lowLimit;// random coorect number for development
 	aiGuess = 50;// initialize first guess as two possible partitions
 
 	cout << "\tHello Guessing Game Version 2.0" << endl;
@@ -74,7 +82,7 @@ int main(){
 
 
 	
-	std::string strWin ("correct");// str cmd to quit
+	std::string strWin ("correct");// str cmd to win
 	std::string strQuit ("quit");// str cmd to quit
 	std::string strReady ("ready");// for ready
 	std::string strHigh ("too high");// for comparison
@@ -88,21 +96,22 @@ int main(){
 		
 
 
-	/* Evaluate user input | added + 1 to MAX to make up for 'ready' user input */
+	/* Evaluate user input at every pass 
+	thru while loop until 7 tries have passed */
 	while(tries <= MAX) {
 
-		if (tries == MAX)
-		{
+		if (tries == MAX){
 			/* force win */
 			cout << "Rusty: 	The number you chose is " << aiGuess << "\nYay!  Cake and punch for everyone!!!\n\tGoodbye!" << endl;
 			return 0;
-		}
+		}// end game if user input = "correct"
 
 		if ((userReady.compare(strReady)==1))
 		{
 			/* if user is 'ready', then begin the game, else input, then quit */
 			break;
-		}
+		}// begin game if user input = 'ready'
+		
 		/* main code */
 
 		//cout << "Correct: 	" << a << endl;
@@ -118,8 +127,7 @@ int main(){
 			return 0;
 		}
 		/* exit game WIN */
-		if (userInput.compare(strWin) == 0)
-		{
+		if (userInput.compare(strWin) == 0){
 			/* if user enters correct, then win */
 			cout << "I win!!!" << endl;
 			return 0;
@@ -132,19 +140,19 @@ int main(){
 	        highLimit = aiGuess;
 	        tooHigh();
 
-	    }
+	    }// end if statement for user input = 'too high'
 	    else if (userInput.compare(strLow) == 0){
 	    	/* if user typed 'too low' */
 	        cout << "You said my answer was too low" << endl;
 	        lowLimit = aiGuess;
 	        tooLow();
-	    } 
+	    } // end if statement for user input = 'too low'
 	    else {
-
+	    	/* catch all if statement */
 	    	cout << "oh no! sumthing broke!\nRusty: 	Let's try this again...type 'too low' if I guessed TOO LOW, 'too high' if I guessed TOO HIGH, and 'quit' if you decide not to play." << endl;
-	    } // end control user input loop
+	    } // end if statement for catch-all for user input
 
-	}// end of while control loop
+	}// end of main while control loop
 
 	return 0;
 }

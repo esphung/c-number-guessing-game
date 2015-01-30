@@ -9,8 +9,7 @@ all:
 	#g++ -std=c++0x pegasusGuess.cpp -o pegasusGuess
 	#make pegasusGuess
 
-
 clean:
 	rm -rf a.out
-	#rm -rf pegasusGuess
+	rm -rf pegasusGuess
 
