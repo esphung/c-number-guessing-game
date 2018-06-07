@@ -1,10 +1,12 @@
-HOW TO RUN THIS PROGRAM!
+Number Guessing Game in C
+----
+(meant to teach about raw user input, cmd line interfaces and simple alorithms(my first). also first time using make to build a c program 
 
-(while in directory run...)
-Command line:
-	make clean
-	make all
-	make run
+how to run it
+____
+$ make clean
+$ make all
+$ make run
 
 
 
